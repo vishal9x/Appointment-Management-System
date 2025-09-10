@@ -1,0 +1,45 @@
+<div class="container">
+  <header class="header">
+    <h1>Appointment List</h1>
+    <button class="book-btn" (click)="onBookAppointment()">Book Appointment</button>
+  </header>
+
+  <main>
+    <table class="appointment-table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Patient Name</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Doctor Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appt of appointments">
+          <td>{{ appt.Id }}</td>
+          <td>{{ appt.PatientName }}</td>
+          <td>{{ appt.StartTime }}</td>
+          <td>{{ appt.EndTime }}</td>
+          <td>{{ appt.DoctorName }}</td>
+          <td>
+            <button class="icon-btn" title="Edit" (click)="onEdit(appt)">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="icon-btn" title="Delete" (click)="onDelete(appt)">
+              <span class="material-icons">delete</span>
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="appointments.length === 0">
+          <td colspan="6" class="empty-row">No appointments found.</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Appointment System</p>
+  </footer>
+</div>
